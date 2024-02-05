@@ -50,6 +50,10 @@ return {
       })
 
       opts.presets.lsp_doc_border = true
+
+      vim.diagnostic.config({
+        float = { border = "rounded" },
+      })
     end,
   },
 
@@ -76,7 +80,7 @@ return {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
     keys = {
-      { "<Tab>",   "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
+      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
       { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
     },
     opts = {
