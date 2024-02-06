@@ -1,15 +1,21 @@
+local common_skip_filters = {
+  { event = "notify", find = "No information available" },
+  { event = "notify", find = "Unable to find ESLint library" },
+  { event = "notify", find = "Invalid mapping for  Y" },
+}
+
 return {
   -- messages, cmdline and the popupmenu
   {
     "folke/noice.nvim",
     opts = function(_, opts)
-      table.insert(opts.routes, {
-        filter = {
-          event = "notify",
-          find = "No information available",
-        },
-        opts = { skip = true },
-      })
+      for _, filter in ipairs(common_skip_filters) do
+        table.insert(opts.routes, {
+          filter = filter,
+          opts = { skip = true },
+        })
+      end
+
       local focused = true
       vim.api.nvim_create_autocmd("FocusGained", {
         callback = function()
