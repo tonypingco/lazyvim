@@ -244,6 +244,15 @@ return {
     "mbbill/undotree",
     keys = {
       { "<leader><F5>", "<cmd>UndotreeToggle<CR>", desc = "Toggle Undo Tree" },
+      { "<leader><F6>", "<cmd>UndotreeShow<CR>", desc = "Show Undo Tree" },
+    },
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      source_selector = {
+        winbar = true,
+      },
     },
   },
 }
