@@ -240,4 +240,23 @@ return {
       require("telescope").load_extension("file_browser")
     end,
   },
+  {
+    "mbbill/undotree",
+    keys = {
+      { "<leader><F5>", "<cmd>UndotreeToggle<CR>", desc = "Toggle Undo Tree" },
+      { "<leader><F6>", "<cmd>UndotreeShow<CR>", desc = "Show Undo Tree" },
+    },
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      keywords = {
+        PERF = { icon = "󰅒 ", color = "#C09DE3", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+        NOTE = { icon = "󰍨 ", color = "hint", alt = { "INFO" } },
+      },
+    },
+  },
 }

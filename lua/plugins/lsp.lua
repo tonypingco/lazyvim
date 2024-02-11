@@ -23,7 +23,20 @@ return {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
       servers = {
-        cssls = {},
+        cssls = {
+          settings = {
+            css = {
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+            scss = {
+              lint = {
+                unknownAtRules = "ignore",
+              },
+            },
+          },
+        },
         tailwindcss = {
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)

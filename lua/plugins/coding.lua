@@ -31,6 +31,7 @@ return {
           require("refactoring").select_refactor()
         end,
         mode = "v",
+        desc = "Refactor",
         noremap = true,
         silent = true,
         expr = false,
