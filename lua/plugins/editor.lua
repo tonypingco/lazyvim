@@ -255,4 +255,16 @@ return {
       },
     },
   },
+  {
+    "folke/todo-comments.nvim",
+    opts = {
+      keywords = {
+        PERF = { icon = "󰅒 ", color = "#C09DE3", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+        NOTE = { icon = "󰍨 ", color = "hint", alt = { "INFO" } },
+      },
+    },
+    -- event = "LazyFile",
+    -- cmd = { "TodoQuickFix" },
+    -- keys = {},
+  },
 }
