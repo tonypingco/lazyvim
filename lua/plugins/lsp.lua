@@ -12,6 +12,7 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
+        "omnisharp",
       })
     end,
   },
@@ -20,7 +21,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      inlay_hints = { enabled = false },
+      inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
         cssls = {},

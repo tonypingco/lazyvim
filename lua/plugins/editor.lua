@@ -248,14 +248,6 @@ return {
     },
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      source_selector = {
-        winbar = true,
-      },
-    },
-  },
-  {
     "folke/todo-comments.nvim",
     opts = {
       keywords = {

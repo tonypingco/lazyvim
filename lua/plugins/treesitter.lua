@@ -64,4 +64,11 @@ return {
       vim.treesitter.language.register("markdown", "mdx")
     end,
   },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "LazyFile",
+    opts = {
+      autotag = { enable = true },
+    },
+  },
 }
