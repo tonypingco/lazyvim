@@ -1,3 +1,8 @@
+local get_root_dir = function(fname)
+  local util = require("lspconfig.util")
+  return util.root_pattern(".git")(fname) or util.root_pattern("package.json", "tsconfig.json")(fname)
+end
+
 return {
   -- tools
   {
@@ -20,6 +25,18 @@ return {
   -- lsp servers
   {
     "neovim/nvim-lspconfig",
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      keys[#keys + 1] = {
+        "gd",
+        function()
+          -- DO NOT RESUSE WINDOW
+          require("telescope.builtin").lsp_definitions({ reuse_win = false })
+        end,
+        desc = "Goto Definition",
+        has = "definition",
+      }
+    end,
     opts = {
       inlay_hints = { enabled = true },
       ---@type lspconfig.options
@@ -39,9 +56,10 @@ return {
           },
         },
         tailwindcss = {
-          root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
-          end,
+          root_dir = get_root_dir,
+          -- root_dir = function(...)
+          --   return require("lspconfig.util").root_pattern(".git")(...)
+          -- end,
         },
         ---@type lspconfig.options.tsserver
         tsserver = {
@@ -65,12 +83,25 @@ return {
                 vim.lsp.buf.code_action({
                   apply = true,
                   context = {
-                    only = { "source.removeUnused.ts" },
+                    only = { "source.removeUnusedImports.ts" },
                     diagnostics = {},
                   },
                 })
               end,
               desc = "Remove Unused Imports",
+            },
+            {
+              "<leader>cu",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.removeUnused.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Remove Unused Variables",
             },
             {
               "<leader>cI",
@@ -85,10 +116,24 @@ return {
               end,
               desc = "Add Missing Imports",
             },
+            {
+              "<leader>cq",
+              function()
+                vim.lsp.buf.code_action({
+                  apply = true,
+                  context = {
+                    only = { "source.fixAll.ts" },
+                    diagnostics = {},
+                  },
+                })
+              end,
+              desc = "Quick fix",
+            },
           },
-          root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
-          end,
+          root_dir = get_root_dir,
+          -- root_dir = function(...)
+          --   return require("lspconfig.util").root_pattern(".git")(...)
+          -- end,
           single_file_support = false,
           settings = {
             typescript = {

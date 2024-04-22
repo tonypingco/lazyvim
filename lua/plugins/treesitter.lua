@@ -9,6 +9,8 @@ return {
         "cmake",
         "cpp",
         "css",
+        "c_sharp",
+        "dockerfile",
         "fish",
         "gitignore",
         "go",

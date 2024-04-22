@@ -1,7 +1,7 @@
 local common_skip_filters = {
   { event = "notify", find = "No information available" },
   { event = "notify", find = "Unable to find ESLint library" },
-  { event = "notify", find = "Invalid mapping for  Y" },
+  { event = "notify", find = "Invalid mapping for Y" },
 }
 
 return {
@@ -95,18 +95,6 @@ return {
         -- separator_style = "slant",
         show_buffer_close_icons = false,
         show_close_icon = false,
-      },
-    },
-  },
-
-  -- statusline
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = {
-      options = {
-        -- globalstatus = false,
-        theme = "solarized_dark",
       },
     },
   },
