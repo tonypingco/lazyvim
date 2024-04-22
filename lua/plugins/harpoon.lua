@@ -1,12 +1,10 @@
 local prefix = "<leader><leader>"
 local term_string = vim.fn.exists("$TMUX") == 1 and "tmux" or "term"
--- local icon = vim.g.icons_enabled and "󱡀 " or ""
 local wk = require("which-key")
 wk.register({ ["<leader>"] = { name = "󱡀 Harpoon" } }, { prefix = "<leader>" })
 
 return {
   {
-
     "ThePrimeagen/harpoon",
     dependencies = {
       "nvim-lua/plenary.nvim",
